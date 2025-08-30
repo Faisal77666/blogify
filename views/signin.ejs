@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <%- include('./partials/head') %>
+  <title>Signin</title>
+  <style>
+    body {
+      background: linear-gradient(135deg, #1cc88a, #4e73df);
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      min-height: 100vh;
+      margin: 0;
+    }
+
+    .center-container {
+      min-height: calc(100vh - 70px); /* leave space for navbar */
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .signin-card {
+      background: #fff;
+      padding: 2rem;
+      border-radius: 15px;
+      box-shadow: 0px 6px 20px rgba(0,0,0,0.1);
+      width: 100%;
+      max-width: 400px;
+    }
+
+    .signin-card h2 {
+      text-align: center;
+      margin-bottom: 1.5rem;
+      font-weight: bold;
+      color: #1cc88a;
+    }
+
+    .form-label {
+      font-weight: 500;
+    }
+
+    .form-control {
+      border-radius: 10px;
+      padding: 10px;
+    }
+
+    .btn-primary {
+      background: #1cc88a;
+      border: none;
+      border-radius: 10px;
+      width: 100%;
+      padding: 10px;
+      font-weight: bold;
+      transition: 0.3s;
+    }
+
+    .btn-primary:hover {
+      background: #17a673;
+      transform: translateY(-2px);
+    }
+  </style>
+</head>
+<body>
+  <%- include('./partials/nav') %>
+
+  <div class="center-container">
+    <div class="signin-card">
+      <h2>Sign In</h2>
+      <form action="/user/signin" method="post">
+        <div class="mb-3">
+          <label for="exampleInputEmail1" class="form-label">Email address</label>
+          <input 
+            type="email"
+            name="email"
+            class="form-control"
+            id="exampleInputEmail1"
+            placeholder="Enter your email"
+            required>
+        </div>
+        <div class="mb-3">
+          <label for="exampleInputPassword1" class="form-label">Password</label>
+          <input 
+            type="password" 
+            name="password"
+            class="form-control" 
+            id="exampleInputPassword1"
+            placeholder="Enter your password"
+            required>
+        </div>
+        <button type="submit" class="btn btn-primary">Sign In</button>
+      </form>
+    </div>
+  </div>
+
+  <%- include('./partials/scripts') %>
+</body>
+</html>

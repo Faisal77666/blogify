@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <%- include('./partials/head') %>
+  <title><%= blog.title %></title>
+</head>
+<body class="bg-light">
+  <%- include('./partials/nav') %> 
+
+  <div class="container mt-5">
+    <div class="row justify-content-center">
+      <div class="col-lg-8">
+
+        <!-- Blog Card -->
+        <div class="card shadow-lg border-0 rounded-3">
+          <img src="<%= blog.coverImageURL %>" class="card-img-top rounded-top" alt="Cover Image">
+
+          <div class="card-body">
+            <h1 class="card-title fw-bold text-primary"><%= blog.title %></h1>
+            
+            <p class="text-muted mb-2">
+              <% if (blog.createdBy) { %>
+                <img 
+                  src="<%= blog.createdBy.profileImageURL %>" 
+                  class="rounded-circle me-2" 
+                  width="40" height="40" 
+                  alt="Author">
+                <strong><%= blog.createdBy.fullName %></strong>
+              <% } else { %>
+                <span class="fst-italic">Author information not available</span>
+              <% } %>
+            </p>
+
+            <p class="card-text mt-4" style="white-space: pre-line;">
+              <%= blog.body %>
+            </p>
+          </div>
+        </div>
+
+        <!-- Comments Section -->
+        <div class="card mt-5 shadow-sm border-0">
+          <div class="card-body">
+            <h4 class="fw-bold">💬 Comments (<%= comments.length %>)</h4>
+            
+            <% if (locals.user) { %>
+              <form action="/blog/comment/<%= blog._id %>" method="post" class="mt-3">
+                <div class="input-group">
+                  <input 
+                    type="text" 
+                    class="form-control" 
+                    name="content" 
+                    placeholder="Write a comment..." 
+                    required>
+                  <button class="btn btn-primary" type="submit">Post</button>
+                </div>
+              </form>
+            <% } else { %>
+              <p class="text-muted mt-3">You must be signed in to comment.</p>
+            <% } %>
+
+            <!-- Comment List -->
+            <div class="mt-4">
+              <% comments.forEach(comment => { %>
+                <div class="d-flex align-items-start mb-3 p-2 border rounded bg-white">
+                  <img 
+                    src="<%= comment.createdBy.profileImageURL %>" 
+                    class="rounded-circle me-3" 
+                    width="45" height="45" 
+                    alt="User">
+                  <div>
+                    <strong><%= comment.createdBy.fullName %></strong>
+                    <p class="mb-1" style="white-space: pre-line;"><%= comment.content %></p>
+                  </div>
+                </div>
+              <% }) %>
+            </div>
+
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+
+  <%- include('./partials/scripts') %>
+</body>
+</html>

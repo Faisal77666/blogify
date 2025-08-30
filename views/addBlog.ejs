@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <%- include('./partials/head') %>
+  <title>Homepage</title>
+</head>
+<body class="bg-light">
+  <%- include('./partials/nav') %>
+
+  <div class="container mt-5">
+    <div class="row justify-content-center">
+      <div class="col-lg-7 col-md-9 col-sm-12">
+
+        <!-- Card Wrapper -->
+        <div class="card shadow-lg border-0 rounded-3">
+          <div class="card-body p-4">
+            <h3 class="mb-4 text-center text-primary fw-bold">✍️ Create a New Blog</h3>
+
+            <!-- Blog Form -->
+            <form action="/blog" method="post" enctype="multipart/form-data">
+              
+              <!-- Cover Image -->
+              <div class="mb-3">
+                <label for="coverImage" class="form-label fw-semibold">Cover Image</label>
+                <input 
+                  type="file"
+                  class="form-control"
+                  name="coverImage"
+                  id="coverImage"
+                  aria-describedby="coverImage"/>
+              </div>
+
+              <!-- Title -->
+              <div class="mb-3">
+                <label for="title" class="form-label fw-semibold">Title</label>
+                <input 
+                  type="text"
+                  class="form-control"
+                  name="title"
+                  id="title"
+                  placeholder="Enter blog title"
+                  required/>
+              </div>
+
+              <!-- Body -->
+              <div class="mb-3">
+                <label for="body" class="form-label fw-semibold">Body</label>
+                <textarea 
+                  name="body" 
+                  class="form-control" 
+                  id="body" 
+                  rows="6" 
+                  placeholder="Write your blog content here..."
+                  required></textarea>
+              </div>
+
+              <!-- Submit Button -->
+              <div class="d-grid">
+                <button type="submit" class="btn btn-primary btn-lg">
+                  🚀 Publish Blog
+                </button>
+              </div>
+
+            </form>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+
+  <%- include('./partials/scripts') %>
+</body>
+</html>
