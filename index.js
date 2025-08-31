@@ -43,6 +43,6 @@ app.use("/blog",blogRoute)
 
 
 app.listen(Port,()=>{
-  console.log("Server is listening on port 8000...");
+  console.log(`Server is listening on port ${Port}...`);
   
 })
